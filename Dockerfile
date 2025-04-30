@@ -22,5 +22,3 @@ COPY --from=builder /builder/extracted/application/ ./
 # This jar only contains application code and references to the extracted jar files
 # This layout is efficient to start up and CDS friendly.
 ENTRYPOINT ["java", "-jar", "application.jar"]
-#
-EXPOSE 8080
