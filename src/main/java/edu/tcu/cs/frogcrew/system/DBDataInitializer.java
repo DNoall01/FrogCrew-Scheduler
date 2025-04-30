@@ -11,6 +11,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 
 @Component
@@ -31,7 +32,7 @@ public class DBDataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         FrogCrewUser u1 = new FrogCrewUser();
-        u1.setUsername("DNoall");
+        u1.setUsername("dnoall@gmail.com");
         u1.setPassword("password");
         u1.setFirstName("Dylan");
         u1.setLastName("Noall");
@@ -40,6 +41,18 @@ public class DBDataInitializer implements CommandLineRunner {
         u1.setRole(Role.ADMIN);
         u1.setEnabled(true);
         u1.setQualifiedPositions(List.of("Director"));
+
+        FrogCrewUser admin = new FrogCrewUser();
+        admin.setUsername("admin@example.com");
+        admin.setEmail("admin@example.com");
+        admin.setPassword("admin");               // will be BCrypt-encoded
+        admin.setFirstName("Site");
+        admin.setLastName("Admin");
+        admin.setPhoneNumber("000-000-0000");
+        admin.setRole(Role.ADMIN);
+        admin.setQualifiedPositions(Collections.emptyList());
+        userService.addCrewMember(admin);
+        System.out.println("==> Seeded Admin: admin@example.com / admin");
 
         Game game = new Game();
         game.setGameDateTime(LocalDateTime.now());

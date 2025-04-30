@@ -92,10 +92,10 @@ public class FrogCrewUserControllerTest {
                 .andExpect(jsonPath("$.code").value(StatusCode.SUCCESS))
                 .andExpect(jsonPath("$.message").value("Find Success"))
                 .andExpect(jsonPath("$.data", Matchers.hasSize(this.users.size())))
-                .andExpect(jsonPath("$.data[0].userId").value(1))
-                .andExpect(jsonPath("$.data[0].fullName").value("John Smith"))
-                .andExpect(jsonPath("$.data[1].userId").value(2))
-                .andExpect(jsonPath("$.data[1].fullName").value("Jane Smith"));
+                .andExpect(jsonPath("$.data[0].id").value(1))
+                .andExpect(jsonPath("$.data[0].firstName").value("John"))
+                .andExpect(jsonPath("$.data[1].id").value(2))
+                .andExpect(jsonPath("$.data[1].firstName").value("Jane"));
     }
 
     @Test
